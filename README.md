@@ -1,8 +1,12 @@
 # location-search-field
 
-<!--<p>
-  <img width="100%" src="" alt="location-search-field">
-</p>-->
+<p>
+  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-address.png" alt="location-search-field adddress example">
+</p>
+
+<p>
+  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-current-location.png" alt="location-search-field current location example">
+</p>
 
 ## Quick start
 
