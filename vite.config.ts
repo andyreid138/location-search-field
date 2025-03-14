@@ -46,6 +46,7 @@ export default defineConfig(({ mode }) => {
     // Demo build with index.html
     return {
       plugins: [react()],
+      base: './',
       build: {
         outDir: 'dist', // Output separate from library
       },
