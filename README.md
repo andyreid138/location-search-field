@@ -1,85 +1,64 @@
 # location-search-field
 
-<p>
-  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-address.png" alt="location-search-field adddress example">
-</p>
+A lightweight React component for location search with address suggestions and current location detection.
 
-<p>
-  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-current-location.png" alt="location-search-field current location example">
-</p>
+## 🚀 Quick Start
 
-## Quick start
+### Installation
 
-Install it:
+Install via your preferred package manager:
 
 ```bash
-npm i location-search-field
+npm install location-search-field
 # or
 yarn add location-search-field
 # or
 pnpm add location-search-field
 ```
 
-Use it:
+### Basic Usage
 
 ```tsx
 import { LocationSearch } from 'location-search-field';
-```
-
-# Location Search Field Component
-
-- [Location Search Field Component](#location-search-field)
-  - [Features](#features)
-  - [Examples](#examples)
-  - [ArcGis API Token](#ArcGis API Token)
-  - [Usage](#usage)
-  - [Props](#props)
-
-## Features
-
-- As the user types, addresses are suggested based on their entry.
-- Optionally allow user to select their current location which can be read from the browser.
-- Data is pulled from [ESRI's ArcGis /suggest API](https://developers.arcgis.com/rest/geocode/suggest/)
-- Built with Vite/React/MUI.
-
-## Examples
-
-[Play with demo](https://cchanxzy.github.io/react-currency-input-field) or view [examples code](https://github.com/nsaritzky/solid-currency-input-field/blob/main/src/examples)
-
-## ArcGis API Token
-
-Once you have your ArcGIS API Token setup, create a .env file in your project root at add the following:
-```
-VITE_ARCGIS_API_TOKEN=YOUR_API_TOKEN_GOES_HERE
-```
-
-## Usage
-
-```js
-import LocationSearch from 'location-search-field';
 
 <LocationSearch
   id="address"
   label="Search Address"
-  handleLocationSelect= {(coords, id, title) => console.log(coords, id, title)}
-  countryCodeLimit = "USA"
-  allowCurrentLocation = { true } 
-  defaultId = { 'currentLocation' }
+  handleLocationSelect={(coords, id, title) => console.log(coords, id, title)}
+  countryCodeLimit="USA"
+  allowCurrentLocation={true}
+  defaultId="currentLocation"
   sx={{ width: '100%' }}
 />
-
 ```
 
-Have a look in [`src/examples`](TODO) for more examples.
+## 📌 Features
 
-## Props
+- 🔍 **Real-time address suggestions** as the user types.
+- 📍 **Current location selection** using browser geolocation (optional).
+- 🌎 **Powered by \*\*\*\*****[ESRI's ArcGIS Suggest API](https://developers.arcgis.com/rest/geocode/suggest/)**.
+- ⚡ **Built with Vite, React, and Material-UI (MUI)**.
 
-| Name                                               | Type       | Default        | Description                                                                                    |
-| -------------------------------------------------- | ---------- | -------------- | ---------------------------------------------------------------------------------------------- |
-| id                                                 | `string`   | ``             | ID for field (if you'd like to reference it that way)                                          |
-| label                                              | `string`   | ``             | Label to display in field                                                                      |
-| defaultId                                          | `string`   |                | ESRI magickey or 'currentLocation' value                                                       |
-| sx                                                 | `mui sx`   |                | Style                                                                                          |
-| countryCodeLimit                                   | `string`   | ``             | ESRI country code limit (eg. 'Mexico')                                                         |
-| allowCurrentLocation                               | `boolean`  | true           | If true, the user can select their current location as an option                               | 
-| handleLocationSelect                               | `callback` |                | { coords?: Coordinates, id: string, title?: string; }                                          |                                                   
+## 🛠 Examples
+
+- [🔗 Live Demo](https://andyreid138.github.io/location-search-field/dist/index.html)
+
+## 🔑 ArcGIS API Token Setup
+
+To use this component, you'll need an ArcGIS API Token. Add it to a `.env` file at your project's root:
+
+```
+VITE_ARCGIS_API_TOKEN=YOUR_API_TOKEN_GOES_HERE
+```
+
+## 🎛 Props
+
+| Prop Name              | Type       | Default     | Description                                                                                                  |
+| ---------------------- | ---------- | ----------- | ------------------------------------------------------------------------------------------------------------ |
+| `id`                   | `string`   | \`\`        | Field ID (optional).                                                                                         |
+| `label`                | `string`   | \`\`        | Label displayed in the input field.                                                                          |
+| `defaultId`            | `string`   | `''`        | ESRI magic key or `'currentLocation'` value.                                                                 |
+| `sx`                   | `mui sx`   | `undefined` | Custom styling using MUI's `sx` prop.                                                                        |
+| `countryCodeLimit`     | `string`   | \`\`        | ESRI [country code](https://developers.arcgis.com/rest/geocode/suggest/#countrycode) limit (e.g., 'Mexico'). |
+| `allowCurrentLocation` | `boolean`  | `true`      | Enables the option to select the user's current location.                                                    |
+| `handleLocationSelect` | `function` | `undefined` | Callback when a location is selected. Returns `{ coords, id, title }`.                                       |

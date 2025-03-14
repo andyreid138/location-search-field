@@ -6,8 +6,8 @@
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/andyreid138/location-search-field.git"
+    "type": "git",
+    "url": "https://github.com/andyreid138/location-search-field.git"
   },
   "files": [
     "dist"
@@ -33,6 +33,7 @@
     "@fontsource/roboto": "^5.2.5",
     "@mui/icons-material": "^6.4.7",
     "@mui/material": "^6.4.7",
+    "react-syntax-highlighter": "^15.6.1",
     "sass": "^1.85.1"
   },
   "peerdependencies": {
@@ -44,10 +45,13 @@
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@vitejs/plugin-react": "^4.3.4",
+    "ajv": "^8.17.1",
     "eslint": "^9.21.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "glob": "^11.0.0",
     "globals": "^15.15.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -55,8 +59,6 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-plugin-dts": "^4.5.3",
-    "glob": "^11.0.0",
-    "ajv": "^8.17.1",
     "vite-plugin-lib-inject-css": "^2.1.1"
   },
   "sideEffects": [
