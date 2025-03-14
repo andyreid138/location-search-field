@@ -6,12 +6,12 @@ A lightweight React component for location search with address suggestions and c
 
 ### Address Search Example
 <p>
-  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-address.png" alt="Location Search Field - Address Example">
+  <img width="50%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-address.png" alt="Location Search Field - Address Example">
 </p>
 
 ### Current Location Example
 <p>
-  <img width="100%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-current-location.png" alt="Location Search Field - Current Location Example">
+  <img width="50%" src="https://andyreid138.github.io/location-search-field/src/assets/screenshots/example-current-location.png" alt="Location Search Field - Current Location Example">
 </p>
 
 ## 🚀 Quick Start
