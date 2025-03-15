@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Coordinates, TypeaheadOption, ApiFindAddressResponseProps, LocationSearchParams, ApiSuggestResponseProps } from '../types';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import NearMeIcon from '@mui/icons-material/NearMe';
-
-let userLocation = ''; //defining out here so it persists
+import { debounce } from 'lodash';
 
 const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
+
+  const userLocation = useRef('');
 
   const arcgisApiToken = import.meta.env.VITE_ARCGIS_API_TOKEN || "";
 
@@ -15,7 +16,7 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   const [options, setOptions] = useState<TypeaheadOption[]>( ( allowCurrentLocation ? [currentLocationOpt] : [] ) ); 
   const [selectedItem, setSelectedItem] = useState<TypeaheadOption|null>();  
 
-  const getSuggestions = (_event:any, searchTerm:string) => {
+  const getSuggestions = useCallback(debounce((_event:any, searchTerm:string) => {
 
     if( searchTerm.length < 1 || searchTerm == 'Current Location' ){
 
@@ -27,7 +28,7 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   
         const params = {
           text: searchTerm,
-          location: userLocation,
+          location: userLocation.current,
           countryCode: countryCodeLimit,
           maxSuggestions: '5',
           f: 'json',
@@ -53,9 +54,9 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
 
     }
           
-  };
+  }, 300), []);
 
-  const getLocationDetails = ( locationId:string, callBack:( coords:ApiFindAddressResponseProps ) => void ) => { 
+  const getLocationDetails = useCallback(( locationId:string, callBack:( coords:ApiFindAddressResponseProps ) => void ) => { 
 
     const controller = new AbortController();
   
@@ -79,7 +80,7 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   
     return () => controller.abort();
   
-  }  
+  } , []);
 
   const getUserLocation = ( callBack:( coords: Coordinates) => void ) => { 
 
@@ -130,9 +131,9 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   
       if( selectedMagicKey == 'currentLocation' ){
   
-        if(userLocation.length){
+        if(userLocation.current.length){
 
-          handleLocationSelect( { coords: { latitude: userLocation.split(',')[0], longitude: userLocation.split(',')[1] }, id: selectedMagicKey, title: 'Current Location' } );
+          handleLocationSelect( { coords: { latitude: userLocation.current.split(',')[0], longitude: userLocation.current.split(',')[1] }, id: selectedMagicKey, title: 'Current Location' } );
   
         }else{
   
@@ -140,7 +141,7 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   
             if( coords.latitude && coords.longitude ){
   
-              userLocation = coords.latitude.toString() + ',' + coords.longitude.toString();
+              userLocation.current = coords.latitude.toString() + ',' + coords.longitude.toString();
               handleLocationSelect( { coords: { latitude: coords.latitude, longitude: coords.longitude }, id: selectedMagicKey, title: 'Current Location' } );
   
             }else{
