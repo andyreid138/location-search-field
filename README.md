@@ -53,7 +53,7 @@ import { LocationSearch } from 'location-search-field';
 
 ## 🛠 Examples
 
-- [🔗 Live Demo](https://andyreid138.github.io/location-search-field/dist/index.html)
+- [🔗 Live Demo](https://andyreid138.github.io/location-search-field/dist-demo/index.html)
 
 ## 🔑 ArcGIS API Token Setup
 

@@ -48,7 +48,7 @@ export default defineConfig(({ mode }) => {
       plugins: [react()],
       base: './',
       build: {
-        outDir: 'dist', // Output separate from library
+        outDir: 'dist-demo', // Output separate from library
       },
     };
   }
