@@ -13,6 +13,11 @@ function App() {
     setSelectedLocation({ id, coords, title });
   };
 
+  const handleSearchTermChange = ({ searchTerm }: SearchTermChangeResponse) => {
+    console.log('Search term change:', searchTerm);
+  };
+
+
   const handleAddressChange2 = ({ coords, id, title }: LocationSearchResponse) => {
     console.log('Address selected:', coords, id, title);
     setSelectedLocation2({ id, coords, title });
@@ -32,6 +37,7 @@ function App() {
             id="address1"
             label="Search Address"
             handleLocationSelect={handleAddressChange}
+            handleSearchTermChange={handleSearchTermChange}
             countryCodeLimit="UK,FRA"
             allowCurrentLocation={true}
             defaultId={selectedLocation.id}

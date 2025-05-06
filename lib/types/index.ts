@@ -20,6 +20,10 @@ export type LocationSearchResponse = {
     title?: string;
 }
 
+export type SearchTermChangeResponse = {
+    searchTerm: string;
+}
+
 export type LocationSearchParams = {
     id:string;
     label: string;
@@ -28,6 +32,7 @@ export type LocationSearchParams = {
     countryCodeLimit: string;
     allowCurrentLocation: boolean
     handleLocationSelect: ( params: LocationSearchResponse ) => void, 
+    handleSearchTermChange?: ( { params: SearchTermChangeResponse } ) => void, 
   }
 
 export type ApiFindAddressResponseProps = {

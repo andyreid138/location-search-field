@@ -5,7 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import { debounce } from 'lodash';
 
-const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
+const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, label, defaultId, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
 
   const userLocation = useRef('');
 
@@ -17,6 +17,8 @@ const LocationSearch = ( { id, handleLocationSelect, label, defaultId, sx, count
   const [selectedItem, setSelectedItem] = useState<TypeaheadOption|null>();  
 
   const getSuggestions = useCallback(debounce((_event:any, searchTerm:string) => {
+
+    if(handleSearchTermChange) handleSearchTermChange({ searchTerm: searchTerm });
 
     if( searchTerm.length < 1 || searchTerm == 'Current Location' ){
 
