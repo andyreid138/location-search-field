@@ -28,6 +28,7 @@ export type LocationSearchParams = {
     allowCurrentLocation: boolean;
     handleLocationSelect: (params: LocationSearchResponse) => void;
     handleSearchTermChange?: (params: SearchTermChangeResponse) => void;
+    handleEnterClick?: () => void;
 };
 export type ApiFindAddressResponseProps = {
     latitude: string;

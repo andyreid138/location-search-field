@@ -5,7 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import { debounce } from 'lodash';
 
-const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, label, defaultId, defaultText, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
+const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, handleEnterClick, label, defaultId, defaultText, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
 
   const userLocation = useRef('');
 
@@ -218,22 +218,35 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, lab
 
   return (
     <Autocomplete 
-      id = { id }
-      onChange = { ( _event, value ) => setSelectedItem( ( value && typeof value !== 'string' ? { label: value.label, id: value.id } : null )) }
-      sx = { sx }
-      filterOptions = {(x) => x}
-      renderOption = {({ key, ...props }, option: TypeaheadOption) => (
-        <li key={key} {...props}>{ getModifiedOptionLabel( option )}</li>
+      id={id}
+      onChange={(_event, value) => setSelectedItem((value && typeof value !== 'string' ? { label: value.label, id: value.id } : null))}
+      sx={sx}
+      filterOptions={(x) => x}
+      renderOption={({ key, ...props }, option: TypeaheadOption) => (
+        <li key={key} {...props}>{getModifiedOptionLabel(option)}</li>
       )}
       disablePortal
       fullWidth
       freeSolo
       selectOnFocus
-      value = { selectedItem || defaultText || '' } /* defaultText is for when someone typed something in, but didn't select an option */
-      onInputChange = { getSuggestions }
-      getOptionLabel = {(option) => typeof option === "string" ? option : option.label}
-      options = {options}
-      renderInput = {(params) => <TextField {...params} label={label} />}
+      value={selectedItem || defaultText || ''}
+      onInputChange={getSuggestions}
+      getOptionLabel={(option) => typeof option === "string" ? option : option.label}
+      options={options}
+      renderInput={
+        (params) => 
+          <TextField 
+            {...params}
+            label={label}
+            onKeyDown={(ev) => {
+              if (ev.key === 'Enter') {
+                // ev.preventDefault();
+                if(handleEnterClick) handleEnterClick();
+              }
+            }}
+          />
+      }
+      
     />
   );
 
