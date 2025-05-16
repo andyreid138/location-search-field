@@ -27,9 +27,7 @@ export type LocationSearchParams = {
     countryCodeLimit: string;
     allowCurrentLocation: boolean;
     handleLocationSelect: (params: LocationSearchResponse) => void;
-    handleSearchTermChange?: ({ params: SearchTermChangeResponse }: {
-        params: any;
-    }) => void;
+    handleSearchTermChange?: (params: SearchTermChangeResponse) => void;
 };
 export type ApiFindAddressResponseProps = {
     latitude: string;

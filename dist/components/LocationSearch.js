@@ -21713,7 +21713,7 @@ const mP = ({ id: e, handleLocationSelect: n, handleSearchTermChange: r, label: 
       fullWidth: !0,
       freeSolo: !0,
       selectOnFocus: !0,
-      value: w || u,
+      value: w || u || "",
       onInputChange: b,
       getOptionLabel: (O) => typeof O == "string" ? O : O.label,
       options: m,

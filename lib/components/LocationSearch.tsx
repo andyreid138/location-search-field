@@ -18,7 +18,7 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, lab
 
   const getSuggestions = useCallback(debounce((_event:any, searchTerm:string) => {
 
-    if(handleSearchTermChange) handleSearchTermChange({ searchTerm: searchTerm });
+    if(handleSearchTermChange) handleSearchTermChange({ searchTerm });
 
     if( searchTerm.length < 1 || searchTerm == 'Current Location' ){
 
@@ -229,7 +229,7 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, lab
       fullWidth
       freeSolo
       selectOnFocus
-      value = { selectedItem || defaultText } /* defaultText is for when someone typed something in, but didn't select an option */
+      value = { selectedItem || defaultText || '' } /* defaultText is for when someone typed something in, but didn't select an option */
       onInputChange = { getSuggestions }
       getOptionLabel = {(option) => typeof option === "string" ? option : option.label}
       options = {options}
