@@ -5,7 +5,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import { debounce } from 'lodash';
 
-const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, label, defaultId, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
+const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, label, defaultId, defaultText, sx, countryCodeLimit, allowCurrentLocation = true }: LocationSearchParams ) => {
 
   const userLocation = useRef('');
 
@@ -229,7 +229,7 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, lab
       fullWidth
       freeSolo
       selectOnFocus
-      value = { selectedItem || null }
+      value = { selectedItem || defaultText } /* defaultText is for when someone typed something in, but didn't select an option */
       onInputChange = { getSuggestions }
       getOptionLabel = {(option) => typeof option === "string" ? option : option.label}
       options = {options}
