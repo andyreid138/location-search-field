@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import LocationSearch from '../lib/components/LocationSearch';
 import './App.css';
-import { LocationSearchResponse } from '../lib/types';
+import { LocationSearchResponse, SearchTermChangeResponse } from '../lib/types';
 import { Container, Divider, Typography, Box } from '@mui/material';
 
 function App() {

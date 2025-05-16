@@ -28,7 +28,7 @@ export type LocationSearchParams = {
     id:string;
     label: string;
     defaultId: string;
-    defaultText: string;
+    defaultText?: string;
     sx: any;
     countryCodeLimit: string;
     allowCurrentLocation: boolean
