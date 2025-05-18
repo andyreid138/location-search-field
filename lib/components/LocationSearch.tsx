@@ -242,9 +242,7 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, han
               if (ev.key === 'Enter') {
                 if (handleEnterClick) {
                   ev.preventDefault(); // Stop default behavior
-                    setTimeout(() => {
-                    handleEnterClick();
-                    }, 1000); // Delay to allow for the input to be updated
+                  handleEnterClick();
                 }
               }
             }}
