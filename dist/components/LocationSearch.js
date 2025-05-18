@@ -21723,7 +21723,9 @@ const mP = ({ id: e, handleLocationSelect: n, handleSearchTermChange: r, handleE
           ...C,
           label: l,
           onKeyDown: (T) => {
-            T.key === "Enter" && a && a();
+            T.key === "Enter" && a && (T.preventDefault(), setTimeout(() => {
+              a();
+            }, 1e3));
           }
         }
       )
