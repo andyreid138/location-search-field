@@ -42,6 +42,7 @@ function App() {
             allowCurrentLocation={true}
             defaultId={selectedLocation.id}
             sx={{ width: '100%' }}
+            handleEnterClick={ ()=> console.log('enterclick') }
           />
         </Box>
         {selectedLocation.id && (

@@ -1,13 +1,13 @@
 {
   "name": "location-search-field",
-  "version": "0.1.6",
+  "version": "0.1.10",
   "private": false,
   "type": "module",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andyreid138/location-search-field.git"
+    "url": "git+https://github.com/andyreid138/location-search-field.git"
   },
   "files": [
     "dist"

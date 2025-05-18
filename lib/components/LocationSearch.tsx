@@ -25,7 +25,7 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, han
       setOptions( ( allowCurrentLocation ? [currentLocationOpt] : [] ) );
   
     }else{
-    
+
         const controller = new AbortController();
   
         const params = {
@@ -214,8 +214,8 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, han
       }
     }
 
-  }, [defaultId]);  
-
+  }, [defaultId]); 
+ 
   return (
     <Autocomplete 
       id={id}
@@ -240,13 +240,16 @@ const LocationSearch = ( { id, handleLocationSelect, handleSearchTermChange, han
             label={label}
             onKeyDown={(ev) => {
               if (ev.key === 'Enter') {
-                // ev.preventDefault();
-                if(handleEnterClick) handleEnterClick();
+                if (handleEnterClick) {
+                  ev.preventDefault(); // Stop default behavior
+                    setTimeout(() => {
+                    handleEnterClick();
+                    }, 1000); // Delay to allow for the input to be updated
+                }
               }
             }}
           />
       }
-      
     />
   );
 
